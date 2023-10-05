@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:  #27292d;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+           background-color: #45b6fe;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            flex-grow: 1; /* Allow h1 to grow and take remaining space */
+        }
+
+
+         .logo {
+            max-width: 100px;
+            margin-right: 20px;
+            margin-left: 20px;  /* Add margin to separate logo from h1 */
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #0e2433;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #45b6fe;
+        }
+
+         .logout-button {
+            background-color: #ff6347; /* Red color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Hover effect */
+        .logout-button:hover {
+            background-color: #ff0000; /* Darker red on hover */
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/DXC_Technology_logo_%282021%29.svg/1200px-DXC_Technology_logo_%282021%29.svg.png" alt="Logo" class="logo">
+
+    <h1>Manager Dashboard</h1>
+</div>
+
+
+
+<div class="input-box" style="position: absolute; top: 100; right: 0;">
+    <span sec:authorize="isAuthenticated">
+        <form th:action="@{/logout}" method="post">
+           <button class="logout-button" type="submit">Logout</button>
+        </form>
+    </span>
+</div>
+
+
+<div class="container">
+    <h2>Welcome, [[${user.getFullname()}]]</h2>
+
+    <h2>Username: [[${user.getUsername()}]]</h2>
+
+    <h2>Role: Manager</h2>
+
+
+    <div>
+        <p>
+            <a th:href="@{/restricted}" style="color: white;">Restricted</a> <!-- Add the link to the restricted page -->
+        </p>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/DXC_Technology_logo_%282021%29.svg/1200px-DXC_Technology_logo_%282021%29.svg.png" alt="Logo" class="logo">
+
+<div class="form">
+    <form
+            th:action="@{/login}"
+            method="post"
+    >
+        <h2>Login Account</h2>
+
+        <div class="message" th:if="${param.error}">
+            Invalid Userid or Password. Try Again
+        </div>
+
+        <div class="message" th:if="${param.logout}">
+            Successfully Logout
+        </div>
+
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+
+
+        <div class="input-box">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <input type="password" name="password" placeholder="Password"  required>
+        </div>
+
+
+        <div class="input-box">
+            <input type="submit" value="Login">
+        </div>
+        <a href="http://localhost:8080/registration">No Account? Register Here</a>
+    </form>
+</div>
+
+</body>
+</html>
