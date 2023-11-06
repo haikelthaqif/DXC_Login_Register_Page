@@ -1,4 +1,4 @@
-# DXC_Login_Register_Page
+# Login_Register_Page
 A login page with Role Based Authentication using Spring framework (Spring Web, Spring Boot DevTools, Thymeleaf, Spring Security, Spring Data JPA)  and MySQL database.
 
 
